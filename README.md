@@ -1,5 +1,3 @@
-# online-notepad
- Mobile application that keeps notes online (with Flutter)
 # Online Notepad
 ## EN: Mobile application that keeps notes online (with Flutter)
 
