@@ -218,12 +218,6 @@ class AnaSayfa extends StatelessWidget {
                                     children: [
                                       ElevatedButton.icon(
                                         onPressed: () async {
-                                          var dbConnection = ConnectionSettings(
-                                              host: dbHost,
-                                              port: dbPort,
-                                              user: dbUser,
-                                              password: dbPassword,
-                                              db: dbName);
                                           var conn =
                                               await MySqlConnection.connect(
                                                   dbConnection);
@@ -251,12 +245,6 @@ class AnaSayfa extends StatelessWidget {
                                       ),
                                       ElevatedButton.icon(
                                         onPressed: () async {
-                                          var dbConnection = ConnectionSettings(
-                                              host: dbHost,
-                                              port: dbPort,
-                                              user: dbUser,
-                                              password: dbPassword,
-                                              db: dbName);
 
                                           var updateNotSql =
                                               "UPDATE notes SET _note${_controlANMP.getNoteCount + 1} = '${_controlANMP.getNotesText[_controlANMP.getNoteCount].text}' WHERE _un = '${_controlALP.getUserName}';";
@@ -277,12 +265,6 @@ class AnaSayfa extends StatelessWidget {
                                       ),
                                       ElevatedButton.icon(
                                         onPressed: () async {
-                                          var dbConnection = ConnectionSettings(
-                                              host: dbHost,
-                                              port: dbPort,
-                                              user: dbUser,
-                                              password: dbPassword,
-                                              db: dbName);
 
                                           var updateNotSql =
                                               "UPDATE notes SET _note1 = '${_controlANMP.getNotesText[1].text}' and _note1 = '${_controlANMP.getNotesText[1].text}' and _note1 = '${_controlANMP.getNotesText[1].text}' and _note1 = '${_controlANMP.getNotesText[1].text}' and _note1 = '${_controlANMP.getNotesText[1].text}' and  WHERE _un = '${_controlALP.getUserName}';";

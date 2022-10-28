@@ -86,12 +86,6 @@ class loginPage extends StatelessWidget {
                     //Giriş Buttonu
                     ElevatedButton(
                       onPressed: () async {
-                        var dbConnection = ConnectionSettings(
-                            host: dbHost,
-                            port: dbPort,
-                            user: dbUser,
-                            password: dbPassword,
-                            db: dbName);
 
                         var conn = await MySqlConnection.connect(dbConnection);
                         var sql =
@@ -150,12 +144,6 @@ class loginPage extends StatelessWidget {
                             passwordTextBox.text != "" &&
                             passwordTextBox.text.length + 1 > 6 &&
                             usernameTextBox.text.length + 1 > 6) {
-                          var dbConnection = ConnectionSettings(
-                              host: dbHost,
-                              port: dbPort,
-                              user: dbUser,
-                              password: dbPassword,
-                              db: dbName);
 
                           var conn =
                               await MySqlConnection.connect(dbConnection);

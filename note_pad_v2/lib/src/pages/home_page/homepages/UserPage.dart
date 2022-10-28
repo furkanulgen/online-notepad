@@ -1,9 +1,13 @@
+// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:mysql1/mysql1.dart';
 import 'package:note_pad_v2/src/providers/AppNotesManagementProvider.dart';
 import '../../../providers/AppPagesManagementProvider.dart';
 import '../../../providers/AppLoginProvider.dart';
 import 'package:provider/provider.dart';
 import '../../../../settings.dart';
+
+TextEditingController ChangePassword = TextEditingController();
 
 List<NetworkImage> dateIcon = [
   NetworkImage(
@@ -29,7 +33,6 @@ class KullaniciSayfa extends StatelessWidget {
     var _controlAPMP = Provider.of<AppPagesManagementProvider>(context);
     var _controlALP = Provider.of<AppLoginProvider>(context);
     var _controlANMP = Provider.of<AppNotesManagementProvider>(context);
-    print(DateTime.now().hour);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -71,7 +74,9 @@ class KullaniciSayfa extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
+                          SizedBox(
+                            width: 135,
+                            height: 190,
                             child: Image(
                                 image: DateTime.now().hour >= 5 &&
                                         DateTime.now().hour < 12
@@ -80,18 +85,16 @@ class KullaniciSayfa extends StatelessWidget {
                                             DateTime.now().hour < 18
                                         ? dateIcon[1]
                                         : dateIcon[2]),
+                          ),
+                          SizedBox(
                             width: 135,
                             height: 190,
-                          ), //TODO 5>12 12>18 18>5
-                          Container(
                             child: DateTime.now().hour < 12 &&
                                     DateTime.now().hour > 12
                                 ? dateText[0]
                                 : DateTime.now().hour < 18
                                     ? dateText[1]
                                     : dateText[2],
-                            width: 135,
-                            height: 190,
                           ),
                         ],
                       ),
@@ -100,6 +103,7 @@ class KullaniciSayfa extends StatelessWidget {
                       ),
                       Expanded(
                         child: Container(
+                          // ignore: sort_child_properties_last
                           child: Column(
                             children: [
                               const SizedBox(
@@ -113,7 +117,7 @@ class KullaniciSayfa extends StatelessWidget {
                                       color: page4Color),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
+                                    children: const [
                                       Center(
                                           child: Text(
                                         "User Information",
@@ -151,7 +155,7 @@ class KullaniciSayfa extends StatelessWidget {
                                                     Icon(Icons.person),
                                                     Text(
                                                       "Username : ${_controlALP.getUserName}",
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontSize: 24,
                                                           fontWeight:
                                                               FontWeight.bold),
@@ -163,21 +167,98 @@ class KullaniciSayfa extends StatelessWidget {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.all(10),
+                                          padding: EdgeInsets.all(10),
                                           child: Container(
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(25),
                                                 color: page3Color),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                            child: Column(
                                               children: [
-                                                Icon(Icons.person),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 25.0),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey[200],
+                                                        border: Border.all(
+                                                            color: page3Color),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12)),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 20.0),
+                                                      child: TextField(
+                                                        controller:
+                                                            ChangePassword,
+                                                        decoration: const InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                            hintText:
+                                                                "NEW PASSWORD"),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(25),
+                                                        color: page4Color),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        ElevatedButton.icon(
+                                                          onPressed: () async {
+                                                            if(ChangePassword.text.length >= 6){
+                                                              var connCP =
+                                                                await MySqlConnection
+                                                                    .connect(
+                                                                        dbConnection);
+                                                            var sqlCP =
+                                                                "Update users Set _pw = '${ChangePassword.text}' Where _un = '${_controlALP.getUserName}';";
+                                                            var resultsLogin =
+                                                                await connCP
+                                                                    .query(
+                                                                        sqlCP);
+                                                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text("Dont Forget! New Password : ${ChangePassword.text}"),));
+                                                            }else{
+                                                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text("ERORR ! : at least 6 characters"),
+                          ));
+                                                            }
+                                                          },
+                                                          icon: Icon(
+                                                              Icons.refresh),
+                                                          label: Text(
+                                                              "Change Password"),
+                                                          style: ButtonStyle(
+                                                            backgroundColor:
+                                                                MaterialStatePropertyAll(
+                                                                    page2Color),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        )
 
                                         //*
                                       ],
