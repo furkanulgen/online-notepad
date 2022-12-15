@@ -4,32 +4,18 @@
 
 ## TR: Notları çevrimiçi tutan mobil uygulama (Flutter ile)
 
-## Technologies used in online-notepad-OLD
+## ENGLISH || TURKISH
 
-### EN:
+## Technologies used in online-notepad-OLD || online-notepad-OLD'da Kullanılan Teknolojiler
 
-#### 1. MYSQL DATABASE
+#### 1. MYSQL DATABASE || MYSQL VERİ TABANI
 
-### TR:
+## Technologies used in online-notepad-STABLE || online-notepad-STABLE'da Kullanılan Teknolojiler
 
-#### 1. MYSQL VERİ TABANI
+#### 1. Firebase Authentication (Google Login) || Firebase Yetkilendirme Sistemi (Google Girişi)
 
-## Technologies used in online-notepad-STABLE
+#### 2. Firebase Firestore (Storage) || Firebase'in Firestore Depolama Teknolojisi
 
-### EN:
-
-#### 1. Firebase Authentication (Google Login)
-
-#### 2. Firebase Firestore
-
-#### 3. State Management (provider)
-
-### TR:
-
-#### 1. Firebase Yetkilendirme Sistemi (Google Girişi)
-
-#### 2. Firebase'in Firestore Depolama Teknolojisi
-
-#### 3. Durum Yönetimi (provider)
+#### 3. State Management (provider) || Durum Yönetimi (provider)
 
 Go To [LinkedIn](https://www.linkedin.com/in/furkanulgen/)
