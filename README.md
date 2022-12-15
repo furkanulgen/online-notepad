@@ -1,10 +1,8 @@
+### ENGLISH || TURKISH
+
 # Online Notepad
 
-## EN: Mobile application that keeps notes online (with Flutter)
-
-## TR: Notları çevrimiçi tutan mobil uygulama (Flutter ile)
-
-## ENGLISH || TURKISH
+## Mobile application that keeps notes online (with Flutter) || Notları çevrimiçi tutan mobil uygulama (Flutter ile)
 
 ## Technologies used in online-notepad-OLD || online-notepad-OLD'da Kullanılan Teknolojiler
 
