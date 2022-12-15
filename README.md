@@ -1,6 +1,6 @@
 ### ENGLISH || TÜRKÇE
 
-# Online Notepad
+# Online Notepad || İnternet Üzerinden Not Defteri
 
 ## Mobile application that keeps notes online (with Flutter) || Notları çevrimiçi tutan mobil uygulama (Flutter ile)
 
